@@ -1,15 +1,15 @@
 ---
-title: "index"
+title: "EDS 211 Project Time Tracker"
 author: "Mia Forsline"
-date: "11/8/2021"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
-
+# LA Tree Canopy Cover Project Time Tracker 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 # get libraries
 if (!require(librarian)){
   install.packages("librarian")
