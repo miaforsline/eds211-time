@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+#new commit for GitHub Lab 3 (2021-11/17)
 ```{r, message = FALSE, warning = FALSE}
 # get libraries
 if (!require(librarian)){
