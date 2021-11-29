@@ -10,20 +10,22 @@ output: html_document
 # LA Tree Canopy Cover Project Time Tracker 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(here)
 ```
 
-#new commit for GitHub Lab 3 (2021-11/17)
-```{r, message = FALSE, warning = FALSE}
+```{r, warning=FALSE}
 # get libraries
 if (!require(librarian)){
   install.packages("librarian")
   library(librarian)
 }
 librarian::shelf(
-  clockify, dplyr, DT, glue, lubridate, readr)
+  bbest/clockify,
+  dplyr, DT, ggplot2,
+  quiet = TRUE)
 
 # CHANGE THESE VARIABLES!
-api_txt <- "~/Desktop/eds211/clockify-api.txt"
+api_txt <- here("../clockify-api.txt")
 project_name <- "la-tree"
 
 # use API key to authenticate
@@ -31,23 +33,107 @@ CLOCKIFY_API_KEY <- readLines(api_txt)
 set_api_key(CLOCKIFY_API_KEY)
 
 # get data
-d_projects <- projects() %>% 
-      select(project_id, project_name)
-d_users <- users() %>% 
-      select(user_id, user_name)
-d_times <- time_entries(concise = F) %>% 
-  left_join(
-    d_projects, by = "project_id") %>% 
-  left_join(
-    d_users, by = "user_id")
-
-# show table
-d_times %>% 
+d_times <- time_entries_all()
+table(d_times$project_name) # confirm project_name
+d_times <- d_times %>%
+  filter(
+    project_name == !!"la-tree") %>%
   select(
-    user_name, project_name, 
-    time_start, duration, description) %>% 
-  arrange(user_name, project_name, time_start) %>% 
-  datatable() %>%
-  formatRound(columns=c('duration'), digits=3)
+    task_name, time_start, duration_hrs, 
+    user_name, description) %>% 
+  arrange(task_name, time_start)
+```
+
+## la-tree {.tabset}
+
+### Overall 
+
+```{r}
+# plot ALL
+plot_burndown(
+  d_times,
+  beg = as.Date("2021-10-24"), # day before
+  end = as.Date("2021-12-07"), # day after
+  hrs = 95)
+
+# table ALL
+datatable(d_times)
+```
+
+### 1. Import
+
+```{r}
+task <- "Import"
+d_task <- d_times %>% 
+  filter(task_name == !!task)
+plot_burndown(
+  d_task,
+  beg = as.Date("2021-10-24"), # day before
+  end = as.Date("2021-11-08"), # day after
+  hrs = 15)
+
+datatable(d_task)
+```
+
+
+### 2. Tidy
+
+```{r}
+task <- "Tidy"
+d_task <- d_times %>% 
+  filter(task_name == !!task)
+plot_burndown(
+  d_task,
+  beg = as.Date("2021-10-31"), # day before
+  end = as.Date("2021-11-08"), # day after
+  hrs = 15)
+
+datatable(d_task)
+```
+
+
+### 3. Transform
+
+```{r}
+task <- "Transform"
+d_task <- d_times %>% 
+  filter(task_name == !!task)
+plot_burndown(
+  d_task,
+  beg = as.Date("2021-11-07"), # day before
+  end = as.Date("2021-11-22"), # day after
+  hrs = 10)
+
+datatable(d_task)
+```
+
+### 4. Visualization
+
+```{r}
+task <- "Visualize"
+d_task <- d_times %>% 
+  filter(task_name == !!task)
+plot_burndown(
+  d_task,
+  beg = as.Date("2021-11-07"), # day before
+  end = as.Date("2021-11-22"), # day after
+  hrs = 15)
+
+datatable(d_task)
+```
+
+### 5. Communicate 
+
+```{r}
+task <- "Communicate"
+d_task <- d_times %>% 
+  filter(task_name == !!task)
+plot_burndown(
+  d_task,
+  beg = as.Date("2021-11-14"), # day before
+  end = as.Date("2021-12-07"), # day after
+  hrs = 20)
+
+datatable(d_task)
 ```
 
