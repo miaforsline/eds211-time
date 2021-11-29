@@ -9,11 +9,14 @@ output: html_document
 
 # LA Tree Canopy Cover Project Time Tracker 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      error = FALSE)
 library(here)
 ```
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, echo=FALSE}
 # get libraries
 if (!require(librarian)){
   install.packages("librarian")
@@ -135,5 +138,9 @@ plot_burndown(
   hrs = 20)
 
 datatable(d_task)
+```
+
+```{r}
+#rmarkdown::render_site()
 ```
 
