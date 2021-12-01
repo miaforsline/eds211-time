@@ -187,11 +187,17 @@ datatable(d_task)
 
 # Interpret Burndown Plots
 
-Overall, we ended up under budget with excess hours out of our predicted budget of 95 hours. This is evidenced by the grey bars rising above the red line. We also finished working early and completed most of our work by November 21, the day before our final presentation for EDS 220. 
+- **Overall**, we ended up under budget with excess hours out of our predicted budget of 95 hours. This is evidenced by the grey bars rising above the red line. We also finished working early and completed most of our work by November 21, the day before our final presentation for EDS 220. 
 
-For Import, we were exactly on budget and spent a total of 20 hours on the task. We finished the task early on November 1. 
+- For **Import**, we were exactly on budget and spent a total of 20 hours on the task. We finished the task early on November 1. 
 
-For Tidy, we were under budget and completed the task right on time on November 8, 2021.  
+- For **Tidy**, we were under our budget of 15 hours and completed the task right on time on November 8, 2021. We spent approximately 10 hours on the task. 
+
+- For **Transform**, we were under our budget of 10 hours and completed the task early on November 16. We spent approximately 6 hours on the task. 
+
+- For **Visualization**, we were over our budget of 15 hours and completed the task on November 18, 2021, which was before our deadline. We spent approximately 18.5 hours on the task, which was 3.5 hours over budget. 
+
+- For **Communicate**, we were slightly over our budget of 20 hours and completed the task on time by December 6, which is when the entire project concluded. We went over budget by approximately 0.25 hours. 
 
 ```{r}
 #test
