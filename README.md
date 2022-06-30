@@ -8,7 +8,7 @@ Welcome to the Team Science course for the Masters in Environmental Data Science
 1. What should I work on next?
 2. How long will it take?
 3. How do we adapt to change?
-4. 
+
 These basic questions are however deceptively difficult to answer, especially as the size of the team and scope of the project increases.
 
 What should I work on next? You’ll learn ‘agile’ software development techniques to divide work into tasks, which can be assigned to various team members and passed between as work progresses. These tasks can be arranged as cards into columns on a ‘Kanban’ board: horizontally according to status (ToDo, In Progress, Done) or time (next week, next month, …); and vertically based on priority (from most to least important, top to bottom). This overview of who is to do what next will be approached with different tools embracing increasing levels of complexity: a Trello board for basic projects without code, a Github Project to integrate Github Issues associated with code level git commit messages, and ZenHub for adding dependencies between issues and clustering into Epics for use with Roadmaps.
